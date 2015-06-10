@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter>
+	<name>$adapterName</name>
+	<type>Sql</type>
+	<database-jndi>$jndiName</database-jndi>
+		<operations>
+			<operation>
+			<name>$operationName</name>
+			<operation-type>$operation</operation-type>
+			<query>$query</query>
+			</operation>
+		</operations>
+</adapter>

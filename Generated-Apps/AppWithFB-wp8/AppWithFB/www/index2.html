@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>      
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/hex-framework.js"></script>
+<script type="text/javascript" src="js/ajaxrequest.js"></script>
+<script type="text/javascript" src="js/json2.js"></script>
+<script type="text/javascript" src="js/hexlocalDB.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+
+<script type="text/javascript" src="js/handleblackberryevents.js"></script>
+<script type="text/javascript" src="js/createblackberrymenu.js"></script>
+<script type="text/javascript" src="js/handleblackberryremotedisable.js"></script>
+<script type="text/javascript" src="js/handleblackberrypush.js"></script>
+
+<link rel="stylesheet" href="css/hex-style.css">
+<link rel="stylesheet" href="css/jquery.mobile-1.2.0.css">
+<title>WorkQuikr</title>
+<script>
+onInsertResult=function reqOnSuccess(req)
+{
+	
+	var json = JSON.parse(req.responseText);
+    document.getElementById("custNameOut").value = json.returnValue[0].sname;
+}
+
+onInsertError=function(req){
+	alert('Error!\nStatusText='+req.statusText+'\nContents='+req.responseText);
+}
+
+function refFind()
+{
+	
+	var sid=document.getElementById('custIdText').value;
+	
+	var args = { 
+		'name':"Student-Sql", 
+		'operation':"getAt", 
+		'param':[sid], 
+		'Format':"JSON",
+        'DisplayFormat':"List",
+        'Data':"idstudent_record,sname",
+        'Event':"onclick",
+        'JavascriptName':"DisplayTicketInformation",
+        'FunctionPatameter' :"idstudent_record,sname,idstudent_record" 
+		};
+		onResult=onInsertResult;
+		onError=onInsertError;    	
+		invokeAdapter(args);
+}
+</script>
+</head>
+<body>
+	
+<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <h4>
+            WorkQuikr Demo
+        </h4>
+    </div>
+    <div data-role="content">
+        <div id="custId" data-role="fieldcontain">
+            <label for="custId">
+                Customer ID
+            </label>
+            &nbsp;&nbsp;&nbsp;&nbsp;<input name="" id="custIdText" placeholder="ID" value="" data-mini="true"
+            type="text">
+        </div>
+        <center><input data-inline="true" value="Get Customer Name" data-mini="true" type="button" style="background: gray;" onclick="refFind();" ></center>
+        <div id="custName" data-role="fieldcontain">
+            <label for="custName">
+                Customer Name
+            </label>
+            <input name="" id="custNameOut" placeholder="Name" value="" data-mini="true"
+            type="text">
+        </div>
+        <a href="native.html" data-role="button" rel="external" style="background: gray;color;">Native Functionalities</a>
+        
+    </div>
+</div>
+
+</body>
+</html>

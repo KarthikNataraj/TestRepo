@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<script type="text/javascript" charset="utf-8" src="js/cordova-4.0.0.js"></script>      
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/hexlocalDB.js"></script>
+<script type="text/javascript" src="js/hex-framework.js"></script>
+<script type="text/javascript" src="js/ajaxrequest.js"></script>
+<script type="text/javascript" src="js/json2.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript" src="js/i18n.js"></script>
+<script type="text/javascript" src="js/i18n-messages.js"></script>
+<script type="text/javascript" src="js/log4j.js"></script>
+<script type="text/javascript" src="js/logImpl.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/jsencryption.js"></script>
+
+
+<link rel="stylesheet" href="css/hex-style.css">
+<link rel="stylesheet" href="css/jquery.mobile-1.2.0.css">
+<link rel="stylesheet" href="css/stylesheet.css">
+<title>WorkQuikr</title>
+<script>
+var onSuccess = function(req){
+		var data = JSON.parse(req.responseText);
+		document.getElementById("user").innerHTML = "Welcome "+data.name;
+		if(data.email != null){
+			document.getElementById("email").innerHTML = "Your'e mail-id "+ data.email;
+		}
+	};
+var onError = function(){
+	alert("Error in retreiving the details");
+	console.log("Error in retreiving the details");
+	};
+function getDetails(){
+	var activePage = .mobile[0].baseURI;
+	alert("activePage "+activePage);
+	var n = activePage.indexOf("?");
+	var len = activePage.length;
+	var res = activePage.substr(n+1, len);
+	var args = {
+				'type' : "facebook",
+				'code' : res,
+				'client_id' : clientId,
+				'client_secret' : clientSecret,
+				'redirect_uri' : redirectUri
+			};
+			onResult = onSuccess;
+			onError = onError;
+			WorkQuikr.service.oauth(args);
+}
+</script>
+</head>
+<body onload="getDetails();">
+<div id="header">
+	<h3 align="center">WorkQuikr</h3>
+</div>
+<h1>Facebook Login Success</h1>
+<h3>
+	<span id="user"></span><br/>
+	<span id="email"></span>
+</h3>
+</body>
+</html>

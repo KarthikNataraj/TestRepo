@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<project name="AppWithFB" default="deploy"> 
+<property file="build.properties" />
+<path id="compile.classpath">
+<fileset dir="WebContent/WEB-INF/lib">
+<include name="*.jar"/>
+</fileset>
+</path> 
+
+<property name="build.number" value="${build.major.number}.${build.minor.number}"/>
+
+<target name="init">
+<mkdir dir="build/classes"/>
+<mkdir dir="dist" />
+</target>
+
+<target name="compile" depends="init" >
+<javac destdir="build/classes" debug="true" srcdir="src">
+<classpath refid="compile.classpath"/>
+</javac>
+</target>
+ <target name="war" depends="compile">
+<war destfile="dist/AppWithFB${build.number}.war" webxml="WebContent/WEB-INF/web.xml">
+<fileset dir="WebContent"/>
+<lib dir="WebContent/WEB-INF/lib"/>
+<classes dir="build/classes"/>
+</war>
+</target>
+
+ <target name="deploy" depends="war">
+<war destfile="E:/WorkQuikrEnv4.7//apache-tomcat-7.0.5/webapps/AppWithFB${build.number}.war" webxml="WebContent/WEB-INF/web.xml">
+<fileset dir="WebContent"/>
+<lib dir="WebContent/WEB-INF/lib"/>
+<classes dir="build/classes"/>
+</war>
+</target>
+ 
+<target name="clean">
+<delete dir="dist" />
+<delete dir="build" />
+</target>
+ 
+<!-- Build versioning -->
+	<target name="revision">
+    <propertyfile  file="build.properties">
+            <entry key="build.revision.number" type="int" operation="+" value="1" pattern="0"/>
+    </propertyfile>
+</target>
+
+<target name="minor">
+    <propertyfile  file="build.properties">
+            <entry key="build.minor.number" type="int" operation="+" value="1" pattern="0"/>
+            <entry key="build.revision.number" type="int" value="0" pattern="0"/>
+    </propertyfile>
+</target>
+
+<target name="major">
+    <propertyfile  file="build.properties">
+            <entry key="build.major.number" type="int" operation="+" value="1" pattern="0"/>
+            <entry key="build.minor.number" type="int" value="0" pattern="0"/>
+            <entry key="build.revision.number" type="int" value="0" pattern="0"/>
+    </propertyfile>
+</target>
+
+<target name="all">
+    <propertyfile  file="build.properties">
+            <entry key="build.major.number" type="int" operation="+" value="1" pattern="0"/>
+            <entry key="build.minor.number" type="int" operation="+" value="1" pattern="0"/>
+            <entry key="build.revision.number" type="int" operation="+" value="1" pattern="0"/>
+    </propertyfile>
+</target>
+<target name="current-number">
+ <echo>Current build number:${build.number}</echo>
+</target>
+
+</project>

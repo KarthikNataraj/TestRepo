@@ -1,0 +1,179 @@
+
+/* Portrait Mode */
+@media all and (orientation: portrait) {  
+	#header{
+		width:100%;
+		height:30%;
+		postion:fixed;
+		display:block;
+		background: #1d2b57;
+		color:white;
+	}
+	#footer{
+		width:100%;
+		height:20%;
+		postion:fixed;
+		display:block;
+		bottom:0;
+		background: grey;
+	}
+	div { }
+
+	#landscape {display:none;}
+	#portrait {display:block;}
+}
+
+/* Landscape Mode */
+@media all and (orientation: landscape) {  
+	#header{
+		width:100%;
+		height:20%;
+		postion:fixed;
+		display:block;
+		background: #f2ad18;
+	}
+	#footer{
+		width:100%;
+		height:10%;
+		postion:fixed;
+		bottom:0;
+		display:block;
+		background: red;
+	}
+	div { }
+
+	#landscape {display:block;}
+	#portrait {display:none;}
+}
+
+
+/* Smartphones (landscape) ----------- Smartphones (landscape) working*/
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+	#welcomeScreen{
+		background-image: url(Tropical_Parrot600.jpg);
+		background-repeat:no-repeat;
+		background-size: 100% 100%;
+		height: 100%;
+		width: 100%;
+	}
+	#welcomeButtons{
+		width:40%;
+		position:relative;
+		left:50%;
+		padding-top:40%;
+		-webkit-object-fit:contain;
+	}
+}
+
+/* Smartphones (portrait) ----------- Smartphones(portrait) working*/
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+	#welcomeScreen{
+		background-image: url(Tropical_Parrot480.jpg);
+		background-repeat:no-repeat;
+		background-size: 100% 100%;
+		height: 100%;
+		width: 100%;
+	}
+	#welcomeButtons{
+		width:40%;
+		position:relative;
+		left:50%;
+		padding-top:80%;
+		-webkit-object-fit:contain;
+	}
+}
+
+/* iPads (landscape) ----------- iPads (landscape)  working*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+	#welcomeScreen{
+		background-image: url(Tropical_Parrot1280.jpg);
+		background-repeat:no-repeat;
+		background-size: 100% 100%;
+		height: 100%;
+		width: 100%;
+	}
+	#welcomeButtons{
+		width:40%;
+		position:relative;
+		left:50%;
+		padding-top:45%;
+		-webkit-object-fit:contain;
+	}
+}
+
+/* iPads (portrait) ----------- iPads(portrait) working & Tablet(portrait) working*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+	#welcomeScreen{
+		background-image: url(Tropical_Parrot1600.jpg);
+		height: 100%;
+		background-size: 100% 100%;
+		height: 100%;
+		width: 100%;
+	}
+	#welcomeButtons{
+		width:40%;
+		position:relative;
+		left:50%;
+		padding-top:80%;
+		-webkit-object-fit:contain;
+	}
+}
+
+/* Desktops and laptops ----------- Tablet(Landscape)*/
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+	#welcomeScreen{
+		background-image: url(Tropical_Parrot1280.jpg);
+		background-repeat:no-repeat;
+		background-size: 100% 100%;
+		height: 100%;
+		width: 100%;
+	}
+	#welcomeButtons{
+		width:40%;
+		position:relative;
+		left:50%;
+		padding-top:35%;
+		-webkit-object-fit:contain;
+	}
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+	#welcomeScreen{
+		background-image: url(Tropical_Parrot1600.jpg);
+		background-repeat:no-repeat;
+		background-size: 100% 100%;
+		height: 100%;
+		width: 100%;
+	}
+	#welcomeButtons{
+		width:40%;
+		position:relative;
+		left:50%;
+		padding-top:40%;
+		-webkit-object-fit:contain;
+	}
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
